@@ -1,0 +1,116 @@
+.todoapp-container {
+  max-width: 700px;
+  padding: 35px;
+  margin: 20px auto;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2), 0 2.5rem 5rem 0 rgba(0,0,0,.1);
+  border-radius: 8px;
+  background-color: white;
+
+  .header {
+    text-align: center;
+    font-size: 24px;
+  }
+
+  .subheader {
+    margin-bottom: 0;
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 20px;
+    font-size: 16px;
+  }
+
+  .btn {
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .add-button {
+    width: 100%;
+    font-size: 24px;
+    margin-top: 15px;
+  }
+
+  .list-section {
+    padding-top: 30px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .todo-list {
+    padding-left: 0;
+
+    &__item {
+      list-style: none;
+      margin-top: 30px;
+    }
+
+    &__buttons {
+      margin-top: 15px;
+      display: flex;
+
+      .btn {
+        width: 50%;
+        font-size: 18px;
+      }
+
+      .edit-btn, .cancel-btn {
+        margin-right: 15px;
+      }
+    }
+  }
+
+  .custom-checkbox {
+    position: absolute;
+    opacity: 0;
+
+    & + label {
+      display: inline-flex;
+      align-items: center;
+      &::before {
+        display: inline-block;
+        content: '';
+        cursor: pointer;
+        height: 30px;
+        width: 30px;
+        border: 1px solid grey;
+        margin-right: 10px;
+        padding: 5px;
+      }
+    }
+
+    &:checked + label::before {
+      background: url(check-solid.svg) no-repeat center;
+      background-size: 30px;
+    }
+  }
+
+  .filter-btns {
+    display: flex;
+    gap: 15px;
+    .btn {
+      width: 160px;
+      font-size: 18px;
+    }
+  }
+
+  .edit-mode {
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+
+  .reading-mode.hidden {
+    display: none;
+  }
+
+  .edit-input {
+    height: 45px;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+  }
+
+}
