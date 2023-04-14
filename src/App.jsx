@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import './App.scss';
 import TodoListItem from './components/TodoListItem';
 
@@ -17,10 +17,6 @@ function App() {
   const [tasks, setTasks] = useState(defaultTasks);
   const [currentFilter, setCurrentFilter] = useState(ALL);
 
-  useEffect(() => {
-    console.log(tasks)
-  }, [tasks])
-
   const addTask = (value) => {
     const newTask = {value, id: Date.now(), isDone: false}
     setTasks([...tasks, newTask])
@@ -36,10 +32,10 @@ function App() {
     inputField.value = '';
   }
 
-  const onDelete = (id) => {
-    const currentTasks = tasks.filter(task => id !== task.id)
-    setTasks(currentTasks);
-  }
+  // const onDelete = (id) => {
+  //   const currentTasks = tasks.filter(task => id !== task.id)
+  //   setTasks(currentTasks);
+  // }
 
   const onToggle = (id) => {
     const checkedTask = tasks.map((task) => {
@@ -59,31 +55,6 @@ function App() {
   const filteredTasks = useMemo(filterByStatus, [currentFilter, tasks]);
   const subheader = `${filteredTasks.length} tasks remaining`;
 
-  // const handleEdit = (id) => {
-  //   tasks.map((task) => {
-  //     if (id === task.id) {
-  //       const inputField = document.querySelector('.edit-input');
-  //       inputField.value = task.value;
-  //       document.querySelector('.edit-mode').classList.toggle('active');
-  //       document.querySelector('.reading-mode').classList.toggle('hidden');
-  //     }
-  //     return task;
-  //   })
-  // }
-
-  // const handleSave = (id) => {
-  //   const changedTask = tasks.map((task) => {
-  //     if (task.id === id) {
-  //       document.querySelector('.edit-mode').classList.remove('active');
-  //       document.querySelector('.reading-mode').classList.remove('hidden');
-  //       return {...task, value: document.querySelector('.edit-input').value}
-  //     }
-  //     console.log(task)
-  //     return task;
-  //   })
-  //   setTasks(changedTask);
-  // }
-
   return (
     <div className="todoapp-container">
       <div className='input-section'>
@@ -101,7 +72,7 @@ function App() {
         <h2 className='subheader'>{subheader}</h2>
         <ul className='todo-list'>
           {filteredTasks.map(({value, id, isDone}) => {
-            return <TodoListItem value={value} id={id} key={id} isDone={isDone} tasks={tasks} setTasks={setTasks} onDelete={onDelete} onToggle={onToggle} />
+            return <TodoListItem value={value} id={id} key={id} isDone={isDone} tasks={tasks} setTasks={setTasks} onToggle={onToggle} />
           })}
         </ul>
       </div>

@@ -95,17 +95,6 @@
     }
   }
 
-  .edit-mode {
-    display: none;
-    &.active {
-      display: block;
-    }
-  }
-
-  .reading-mode.hidden {
-    display: none;
-  }
-
   .edit-input {
     height: 45px;
     width: 100%;
