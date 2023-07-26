@@ -16,26 +16,15 @@ function App() {
 
   const [tasks, setTasks] = useState(defaultTasks);
   const [currentFilter, setCurrentFilter] = useState(ALL);
-
-  const addTask = (value) => {
-    const newTask = {value, id: Date.now(), isDone: false}
-    setTasks([...tasks, newTask])
-  }
+  const [inputValue, setInputValue] = useState('');
 
   const handleSubmit = () => {
-    const inputField = document.querySelector('.input-field');
-    const inputValue = inputField.value;
-
-    console.log(inputValue);
-
-    addTask(inputValue);
-    inputField.value = '';
+    const newTask = {value: inputValue, id: Date.now(), isDone: false}
+    setTasks((tasks) => {
+      return [...tasks, newTask]
+    })
+    setInputValue('')
   }
-
-  // const onDelete = (id) => {
-  //   const currentTasks = tasks.filter(task => id !== task.id)
-  //   setTasks(currentTasks);
-  // }
 
   const onToggle = (id) => {
     const checkedTask = tasks.map((task) => {
@@ -58,9 +47,11 @@ function App() {
   return (
     <div className="todoapp-container">
       <div className='input-section'>
-        <h1 className="header">What needs to be done?</h1>
-        <input className="input-field" type='text' />
-        <button className='add-button btn' onClick={handleSubmit}>Add</button>
+        <h1 className="header">Todo list</h1>
+        <div className='wrapper'>
+          <input className="input-field" type='text' placeholder="Write your todo..." value={inputValue} onChange={(e) => {setInputValue(e.target.value);}}/>
+          <button className='add-button btn' onClick={handleSubmit} disabled={inputValue.trim() ? false : true}>Add</button>
+        </div>
       </div>
 
       <div className='list-section'>
@@ -70,11 +61,11 @@ function App() {
           <button type="button" className="btn toggle-btn" onClick={() => setCurrentFilter(COMPLETED)}>Completed</button>
         </div>
         <h2 className='subheader'>{subheader}</h2>
-        <ul className='todo-list'>
-          {filteredTasks.map(({value, id, isDone}) => {
-            return <TodoListItem value={value} id={id} key={id} isDone={isDone} tasks={tasks} setTasks={setTasks} onToggle={onToggle} />
-          })}
-        </ul>
+        {filteredTasks.map(({value, id, isDone}) => {
+          return <ul className='todo-list'>
+                    <TodoListItem value={value} id={id} key={id} isDone={isDone} tasks={tasks} setTasks={setTasks} onToggle={onToggle} />
+                </ul>
+        })}
       </div>
     </div>
   );

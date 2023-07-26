@@ -1,4 +1,8 @@
 import React, { useRef, useState } from "react";
+import edit from '../images/edit.svg';
+import bin from '../images/bin.svg';
+import cancel from '../images/cancel.svg';
+import save from '../images/save.svg';
 
 export default function TodoListItem({ value, id, isDone, tasks, setTasks, onToggle }) {
 
@@ -42,8 +46,8 @@ export default function TodoListItem({ value, id, isDone, tasks, setTasks, onTog
             <label htmlFor={id}>{value}</label>
           </div>
           <div className='todo-list__buttons'>
-            <button className='btn edit-btn' onClick={handleEdit}>Edit</button>
-            <button className='btn' onClick={() => onDelete(id)}>Delete</button>
+            <button className='btn edit-btn' onClick={handleEdit}><img src={edit} alt="edit" /></button>
+            <button className='btn' onClick={() => onDelete(id)}><img src={bin} alt="delete" /></button>
           </div>
         </div>
       )}
@@ -51,8 +55,8 @@ export default function TodoListItem({ value, id, isDone, tasks, setTasks, onTog
         <div className="edit-mode">
           <input ref={(ref) => inputElement.current = ref } className="edit-input" type='text' />
           <div className='todo-list__buttons'>
-            <button className='btn cancel-btn' onClick={() => setIsEditing(false)}>Cancel</button>
-            <button className='btn' onClick={(e) => handleSave(id, e)}>Save</button>
+            <button className='btn cancel-btn' onClick={() => setIsEditing(false)}><img src={cancel} alt="cancel" /></button>
+            <button className='btn' onClick={(e) => handleSave(id, e)}><img src={save} alt="save" /></button>
           </div>
         </div>
       )}

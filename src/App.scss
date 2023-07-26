@@ -1,3 +1,8 @@
+body {
+  background-color: white;
+  margin-top: 45px;
+}
+
 .todoapp-container {
   max-width: 700px;
   padding: 35px;
@@ -9,16 +14,50 @@
   .header {
     text-align: center;
     font-size: 24px;
+    background: rgba(255, 253, 160, 1);
+    background: -webkit-linear-gradient( left, #1E6F9F 0%, #5e60ce 25%, #97b1fb 50%, #1E6F9F 100%) repeat;
+    -webkit-background-clip: text;
+    -ms-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -ms-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    -webkit-animation-name: masked-animation;
+    -webkit-animation-duration: 50s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
   }
 
+  @keyframes masked-animation {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: -8000px -3000px;
+    }
+  }
+
+
   .subheader {
-    margin-bottom: 0;
+    margin: 35px 0 20px 0;
+    font-weight: 600;
+    font-size: 18px;
   }
 
   .input-field {
-    width: 100%;
-    padding: 20px;
+    width: 80%;
+    padding: 15px;
     font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #bdbdbd;
+  }
+
+  .input-section {
+    .wrapper {
+      margin: 40px 0 70px 0;
+      display: flex;
+    }
   }
 
   .btn {
@@ -27,38 +66,66 @@
   }
 
   .add-button {
-    width: 100%;
-    font-size: 24px;
-    margin-top: 15px;
+    width: 20%;
+    font-size: 16px;
+    margin-left: 20px;
+    border-radius: 10px;
+    border: none;
+    background: #1E6F9F;
+    color: white;
+    &:hover {
+      background: #3d85c6;
+    }
   }
 
-  .list-section {
-    padding-top: 30px;
-    max-width: 500px;
-    margin: 0 auto;
-  }
+  // .list-section {
+  //   max-width: 500px;
+  //   margin: 0 auto;
+  // }
 
   .todo-list {
-    padding-left: 0;
+    padding: 0 15px;
+    border: 1px solid #bdbdbd;
+    border-radius: 10px;
 
     &__item {
       list-style: none;
-      margin-top: 30px;
+      padding: 18px 0;
+      &:not(:last-child) {
+        border-bottom: 1px solid #bdbdbd;
+      }
     }
 
     &__buttons {
-      margin-top: 15px;
       display: flex;
+      margin-left: 15px;
 
       .btn {
-        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-size: 18px;
+        background-color: #edf2f7;
+        border: none;
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        &:hover {
+          background-color: #e2e8f0;
+        }
       }
 
       .edit-btn, .cancel-btn {
         margin-right: 15px;
       }
     }
+  }
+
+  .reading-mode, .edit-mode {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .custom-checkbox {
@@ -72,9 +139,10 @@
         display: inline-block;
         content: '';
         cursor: pointer;
-        height: 30px;
-        width: 30px;
+        height: 15px;
+        width: 15px;
         border: 1px solid grey;
+        border-radius: 8px;
         margin-right: 10px;
         padding: 5px;
       }
@@ -82,21 +150,28 @@
 
     &:checked + label::before {
       background: url(check-solid.svg) no-repeat center;
-      background-size: 30px;
+      background-size: 15px;
     }
   }
 
   .filter-btns {
     display: flex;
+    justify-content: space-around;
     gap: 15px;
     .btn {
       width: 160px;
       font-size: 18px;
+      background-color: white;
+      border: none;
+      border-bottom: 2px solid #bdbdbd;
+      &:hover, &:focus{
+        border-bottom: 2px solid #1E6F9F;
+      }
     }
   }
 
   .edit-input {
-    height: 45px;
+    height: 40px;
     width: 100%;
     padding: 5px;
     font-size: 16px;
