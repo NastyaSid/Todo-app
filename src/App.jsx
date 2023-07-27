@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import './App.scss';
 import TodoListItem from './components/TodoListItem';
+import DarkModeToggle from './components/DarkModeToggle';
 
 const defaultTasks = [
   { value: 'Task 1', id: '1', isDone: false },
@@ -46,6 +47,9 @@ function App() {
 
   return (
     <div className="todoapp-container">
+      <div>
+      <DarkModeToggle />
+      </div>
       <div className='input-section'>
         <h1 className="header">Todo list</h1>
         <div className='wrapper'>

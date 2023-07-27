@@ -1,9 +1,121 @@
 body {
-  background-color: white;
-  margin-top: 45px;
+  margin-top: 75px;
+  background-color: #79b5ea;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+body.dark-mode {
+  background-color: #1F1B24;
+  color: #999;
+}
+
+.dark-mode {
+  .todoapp-container {
+    background-color: #232323;
+
+    .input-field, .todo-list {
+      border: none;
+      background-color: #121212;
+      color: #fff;
+    }
+
+    .filter-btns .btn {
+      background-color: #232323;
+      color: #fff;
+      &:hover, &:focus{
+        border-bottom: 2px solid #bb86fc;
+      }
+    }
+
+    .todo-list__buttons .btn, .add-button {
+      background: #A878E2;
+      color: #121212;
+      &:hover {
+        background-color: #bb86fc;
+      }
+    }
+    
+    .header {
+      background: -webkit-linear-gradient(left, #bb86fc 0%, #5e60ce 25%, #97b1fb 50%, #bb86fc 100%) repeat;
+      background-clip: text;
+    }
+
+    .custom-checkbox:checked + label::before {
+      filter: invert(90%);
+    }
+  }
+
+  .dark-mode-toggle > button {
+    color: #999;
+  }
+
+  .dark-mode-toggle > button:last-child {
+    color: #ffe600;
+  }
+}
+
+.dark-mode-toggle {
+  position: absolute;
+  right: 10px;
+  top: -40px;
+
+  & > button {
+    font-size: 1.2em;
+    background: none;
+    border: none;
+    color: #ffe600;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    &:last-child {
+      color: #555;
+    }
+  }
+  & > button:focus {
+    outline: none;
+  }
+
+}
+
+input[type='checkbox'].dmcheck {
+  width: 40px;
+  height: 10px;
+  background: #555;
+  position: relative;
+  border-radius: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+}
+input[type='checkbox'].dmcheck:focus-visible {
+  outline: solid 2px white;
+}
+input[type='checkbox'].dmcheck + label {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: absolute;
+  top: -0.5px;
+  left: 8px;
+  background: #fff;
+  opacity: 0.8;
+}
+
+input[type='checkbox'].dmcheck:checked + label {
+  left: 32px;
+}
+
+.toggle-control {
+  position: relative;
+  padding: 0 4px;
 }
 
 .todoapp-container {
+  position: relative;
   max-width: 700px;
   padding: 35px;
   margin: 20px auto;
@@ -16,17 +128,16 @@ body {
     font-size: 24px;
     background: rgba(255, 253, 160, 1);
     background: -webkit-linear-gradient( left, #1E6F9F 0%, #5e60ce 25%, #97b1fb 50%, #1E6F9F 100%) repeat;
-    -webkit-background-clip: text;
+    background-clip: text;
     -ms-background-clip: text;
     -moz-background-clip: text;
-    background-clip: text;
     -webkit-text-fill-color: transparent;
     -ms-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
-    -webkit-animation-name: masked-animation;
-    -webkit-animation-duration: 50s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
+    animation-name: masked-animation;
+    animation-duration: 50s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
   }
 
   @keyframes masked-animation {
@@ -37,7 +148,6 @@ body {
       background-position: -8000px -3000px;
     }
   }
-
 
   .subheader {
     margin: 35px 0 20px 0;
@@ -75,13 +185,9 @@ body {
     color: white;
     &:hover {
       background: #3d85c6;
+      transition: all 0.5s;
     }
   }
-
-  // .list-section {
-  //   max-width: 500px;
-  //   margin: 0 auto;
-  // }
 
   .todo-list {
     padding: 0 15px;
@@ -113,6 +219,7 @@ body {
         border-radius: 50%;
         &:hover {
           background-color: #e2e8f0;
+          transition: all 0.5s;
         }
       }
 
