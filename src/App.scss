@@ -189,6 +189,11 @@ input[type='checkbox'].dmcheck:checked + label {
     }
   }
 
+  .add-button:disabled {
+    background: #3d85c6;
+    cursor: not-allowed;
+  }
+
   .todo-list {
     padding: 0 15px;
     border: 1px solid #bdbdbd;
@@ -238,6 +243,7 @@ input[type='checkbox'].dmcheck:checked + label {
   .custom-checkbox {
     position: absolute;
     opacity: 0;
+    display: none;
 
     & + label {
       display: inline-flex;
