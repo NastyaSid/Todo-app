@@ -20,8 +20,8 @@ export default function Tasks() {
     <>
     <h2 className='subheader'>{subheader}</h2>
     {filteredTasks.map(({value, id, isDone, isEditing}) => {
-      return <ul className='todo-list'>
-                <TodoListItem value={value} id={id} key={id} isDone={isDone} isEditing={isEditing} />
+      return <ul className='todo-list' key={id} >
+              <TodoListItem value={value} id={id} isDone={isDone} isEditing={isEditing} />
             </ul>
     })}
     </>

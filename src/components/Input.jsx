@@ -1,17 +1,14 @@
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { taskAdd } from "../action";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function Input() {
   const [inputValue, setInputValue] = useState('');
   const dispatch = useDispatch();
 
   const handleSubmit = () => {
-
-    // Dont use date.now for creating IDs
-    // google it
-    // const newTask = inputValue;
-    const newTask = { value: inputValue, id: Date.now(), isDone: false, isEditing: false }
+    const newTask = { value: inputValue, id: uuidv4(), isDone: false, isEditing: false }
     dispatch(taskAdd(newTask))
 
     setInputValue('')

@@ -1,4 +1,3 @@
-// Use present simple instead of past in actions names
 export const taskAdd = (task) => {
   return {
       type: 'TASK_ADD',
